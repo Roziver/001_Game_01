@@ -17,7 +17,7 @@ func main() {
 		rand.Seed(second)            // генерируем слачайное число на основе меняющейся переменной second
 		target := rand.Intn(100) + 1 // берем из случайных чисел интервал от 1 до 100
 
-		fmt.Println(target)
+		//fmt.Println(target)
 
 		fmt.Println("\nI guessed a number from 1 to 100.", "\nCan you guess?")
 
