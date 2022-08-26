@@ -7,22 +7,6 @@ import (
 	"time"
 )
 
-func finishFunc() {
-
-	fmt.Println("\nПопробовать еще раз? Если Да нажмите y если Нет нажмите любую другую клавишу")
-	yes := "y"
-
-	var restart string
-	fmt.Scanf("%s\n", &restart)
-
-	if restart == (yes) {
-		fmt.Println("\nНачнем игру сначала!")
-	} else {
-		fmt.Print("\nДо следущей встречи!", "\n", "\n")
-		os.Exit(0)
-	}
-}
-
 func main() {
 
 	success := true
@@ -35,30 +19,46 @@ func main() {
 
 		fmt.Println(target)
 
-		fmt.Println("\nЯ загадал число от 1 до 100.", "\nСможете угадать?")
+		fmt.Println("\nI guessed a number from 1 to 100.", "\nCan you guess?")
 
 		for attempts := 0; attempts <= 9; attempts++ {
-			fmt.Println("У вас", 10-attempts, "попыток.")
+			fmt.Println("You have", 10-attempts, "attempts.")
 
-			fmt.Println("\nВведите ваше число => ")
+			fmt.Println("\nEnter your number => ")
 
 			var input int
 			fmt.Scanf("%d\n", &input)
 
 			if input < target {
-				fmt.Println("Ваше число меньше того, что я загадал.")
+				fmt.Println("Your number is less than what I guessed.")
 			} else if input > target {
-				fmt.Println("Ваше число больше загаданного.")
+				fmt.Println("Your number is higher than expected.")
 			} else {
 				success = false
-				fmt.Println("\nУра! Поздравляем, вы угадали!")
+				fmt.Println("\nHooray! Congratulations, you guessed it!")
 				finishFunc()
 				break
 			}
 		}
 		if success {
-			fmt.Println("\nК сожалению вы проиграли.", "\nЗагаданное число", target)
+			fmt.Println("\nUnfortunately you lost.", "\nHidden number =>", target)
 			finishFunc()
 		}
+	}
+}
+
+func finishFunc() {
+
+	fmt.Println("\nTo try one more time? If yes click Y, if No press any other key")
+	yes := "Y"
+
+	var restart string
+	fmt.Scanf("%s\n", &restart)
+
+	if restart == (yes) {
+		fmt.Println("\nLet's start the game over!")
+	} else {
+		fmt.Print("\nSee you next time!", "\n", "\n")
+		os.Exit(0)
 	}
 }
